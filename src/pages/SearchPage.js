@@ -2,6 +2,8 @@ import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import BookSearchForm from '../components/BookSearchForm'
 import axios from 'axios'
+import Loader from '../components/Loader'
+import BookList from '../components/BookList'
 
 const LogoText = styled.h3`
   margin: 0;
@@ -45,6 +47,8 @@ const SearchPage = () => {
       setBooks(result.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -66,10 +70,16 @@ const SearchPage = () => {
       <HeaderContainer>
         <LogoText>Book List</LogoText>
         <HeaderSearchForm>
-          <BookSearchForm onChage={handleChange} onSubmit={handleSubmit} searchTerm={searchTerm} />
+          <BookSearchForm onChange={handleChange} onSubmit={handleSubmit} searchTerm={searchTerm} />
         </HeaderSearchForm>
       </HeaderContainer>
     </Header>
+    <Container>
+      <Loader loading={loading}>
+        "<string>{searchTerm}</string>" 책을 찾고 있습니다.
+      </Loader>
+      <BookList books={books}/>
+    </Container>
     </>
   )
 }

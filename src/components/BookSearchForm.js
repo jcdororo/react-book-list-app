@@ -43,7 +43,7 @@ const BookSearchForm = ({
                 type='search'
                 placeholder='책 이름을 검색해주세요.'
                 onChange={onChange}
-                // value={searchTerm}
+                value={searchTerm}
             />
             <Button type='submit'>Search</Button>
         </Form>
