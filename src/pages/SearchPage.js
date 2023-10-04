@@ -4,29 +4,9 @@ import BookSearchForm from '../components/BookSearchForm'
 import axios from 'axios'
 import Loader from '../components/Loader'
 import BookList from '../components/BookList'
+import { Container, Header, HeaderContainer, LogoText } from '../components/Shared'
 
-const LogoText = styled.h3`
-  margin: 0;
-`
 
-const Container = styled.div`
-  max-width: 960px;
-  padding: 15px;
-  margin: 0 auto;
-`
-
-const Header = styled.header`
-  border-bottom: 1px solid gray;
-`
-
-const HeaderContainer = styled(Container)`
-  display: flex;
-  align-items: center;
-  @media (max-width: 778px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`
 
 const HeaderSearchForm = styled.div`
   margin-left: auto;
@@ -76,7 +56,7 @@ const SearchPage = () => {
     </Header>
     <Container>
       <Loader loading={loading}>
-        "<string>{searchTerm}</string>" 책을 찾고 있습니다.
+        "<strong>{searchTerm}</strong>" 책을 찾고 있습니다.
       </Loader>
       <BookList books={books}/>
     </Container>
